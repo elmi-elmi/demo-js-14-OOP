@@ -39,33 +39,87 @@
 
 
 // challenge # 1
+//
+// const Car = function(make, speed){
+//     this.make = make;
+//     this.speed = speed;
+// }
+//
+// Car.prototype.acceleration = function(){
+//     this.speed += 10;
+//     console.log(`${this.make} is going at ${this.speed}Km/h`);
+// }
+//
+// Car.prototype.brake = function(){
+//     this.speed -= 5;
+//     console.log(`${this.make} is going at ${this.speed}Km/h`);
+//
+// }
+//
+// const bmw = new Car('BMW', 120);
+// const mercedes = new Car('Mercedes', 95);
+//
+// bmw.acceleration()
+// bmw.acceleration()
+// bmw.brake()
+// bmw.brake()
+//
+// mercedes.acceleration()
+// mercedes.acceleration()
+// mercedes.brake()
+// mercedes.brake()
 
-const Car = function(make, speed){
-    this.make = make;
-    this.speed = speed;
+const account = {
+    owner:'shahrokh',
+    movements:[1,20,30,11,12],
+
+    get latest(){
+        return this.movements.slice(-1).pop();
+    },
+
+    set lates(mov){
+        this.movements.push(mov)
+        console.log(mov)
+    }
 }
 
-Car.prototype.acceleration = function(){
-    this.speed += 10;
-    console.log(`${this.make} is going at ${this.speed}Km/h`);
+console.log(account.latest)
+
+account.lates  = 222
+
+
+class PersonCl {
+    constructor(fullName, year) {
+        this.fullName = fullName;
+        this.year = year;
+    }
+
+    calcAge(){
+        console.log(2022-this.year)
+    }
+
+    greet(){
+        conosle.log(`hi ${this.firstName}`)
+    }
+
+    set fullName(name){
+        if(name.includes(' ')) this._fullName = name;
+        else alert('Something is wrong!')
+    }
+
+    get fullName(){
+        return this._fullName
+    }
+
+    static hey(){
+        console.log('hey from static method')
+    }
+
+
 }
 
-Car.prototype.brake = function(){
-    this.speed -= 5;
-    console.log(`${this.make} is going at ${this.speed}Km/h`);
+const shahrokh = new PersonCl('shahrokh elmi', 1993)
+// shahrokh.fullName
+console.log(shahrokh)
 
-}
-
-const bmw = new Car('BMW', 120);
-const mercedes = new Car('Mercedes', 95);
-
-bmw.acceleration()
-bmw.acceleration()
-bmw.brake()
-bmw.brake()
-
-mercedes.acceleration()
-mercedes.acceleration()
-mercedes.brake()
-mercedes.brake()
-
+PersonCl.hey()
