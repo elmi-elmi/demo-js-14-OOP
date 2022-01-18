@@ -36,7 +36,48 @@
 // const arr = [1,2,3,4]
 // console.log(arr.__proto__)
 // console.log(arr.__proto__.__proto__)
+class Car {
+    constructor(make,speed){
+        this.make = make;
+        this.speed = speed;
+    }
 
+    acceleration(){
+        this.speed += 10
+        console.log(`${this.make} is going at ${this.speed}Km/h`)
+    }
+
+    brake(){
+        this.speed -= 5;
+        console.log(`${this.make} is going at ${this.speed}Km/h`)
+
+    }
+
+    get speed(){
+        console.log(`${this.make} is going ${this._speed}Km/h`)
+        return this._speed
+    }
+    set speed(speed){
+        this._speed =  speed
+    }
+
+    get speedUS(){
+        console.log(`${this.speed / 1.6}Mile/h`)
+    }
+
+    set speedUS(speed){
+        this.speed = speed*1.6
+    }
+}
+
+
+const bmw = new Car('BMW',120)
+bmw.acceleration()
+bmw.brake()
+bmw.speedUS
+// bmw.speedUS = 50
+console.log(bmw)
+console.log(bmw.speed)
 
 // challenge # 1
 //
@@ -68,7 +109,7 @@
 // mercedes.acceleration()
 // mercedes.brake()
 // mercedes.brake()
-
+/*
 const account = {
     owner:'shahrokh',
     movements:[1,20,30,11,12],
@@ -123,3 +164,18 @@ const shahrokh = new PersonCl('shahrokh elmi', 1993)
 console.log(shahrokh)
 
 PersonCl.hey()
+*/
+
+const PersonProto = {
+    calcAge(){
+        console.log(2022 - this.birthYear);
+    },
+    init(firstName, birth){
+        this.firstName = firstName;
+        this.birth = birth;
+    }
+}
+
+const shahrokh = Object.create(PersonProto);
+shahrokh.init('shahrokh','1993');
+console.log(shahrokh.__proto__ === PersonProto)
