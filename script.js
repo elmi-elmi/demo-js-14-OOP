@@ -181,7 +181,7 @@ PersonCl.hey()
 // shahrokh.init('shahrokh','1993');
 // console.log(shahrokh.__proto__ === PersonProto)
 
-
+/*
 const Person = function(firstName, birth){
     this.firstName = firstName;
     this.birth = birth;
@@ -205,6 +205,7 @@ Student.prototype.introduce = function(){
 }
 
 const shahrokh = new Student('shahrokh', 1993, 'JS');
+*/
 // Student.prototype.constructor = Student;
 //
 // console.log(shahrokh instanceof Student)
@@ -220,44 +221,94 @@ const shahrokh = new Student('shahrokh', 1993, 'JS');
 
 
 // Challenge 4
+//
+//
+// const Car = function(make, speed){
+//     this.make = make;
+//     this.speed = speed;
+// }
+//
+// Car.prototype.acceleration = function(){
+//     this.speed += 10
+//     console.log(`${this.make} acceleration +10 --->`,this.speed)
+// }
+//
+// Car.prototype.brake = function(){
+//     this.speed -= 5;
+//     console.log(`${this.make} brake -5 -->`, this.speed)
+// }
+//
+// const EV = function(make, speed, charge){
+//     Car.call(this,make, speed);
+//     this.charge = charge
+// }
+// EV.prototype = Object.create(Car.prototype)
+//
+// EV.prototype.chargeBattery = function(chargeTo){
+//     this.charge = chargeTo
+// }
+//
+// EV.prototype.accelerate = function(){
+//     this.speed += 20;
+//     this.charge -= (this.charge*0.01)
+//     console.log(`${this.make} going at ${this.speed}, with a charge of ${this.charge}`)
+// }
+//
+// // EV.prototype.constructor = EV;
+// const tesla = new EV('Tesla',120, 40)
+// console.log(tesla)
+//
+// tesla.accelerate()
+// tesla.accelerate()
+// tesla.chargeBattery(20)
+// console.log(tesla.charge)
 
 
-const Car = function(make, speed){
-    this.make = make;
-    this.speed = speed;
+
+class PersonCl {
+    constructor(fullName, year) {
+        this.fullName = fullName;
+        this.year = year;
+    }
+
+    calcAge(){
+        console.log(2022-this.year)
+    }
+
+    greet(){
+        conosle.log(`hi ${this.firstName}`)
+    }
+
+    set fullName(name){
+        if(name.includes(' ')) this._fullName = name;
+        else alert('Something is wrong!')
+    }
+
+    get fullName(){
+        return this._fullName
+    }
+
+    static hey(){
+        console.log('hey from static method')
+    }
 }
 
-Car.prototype.acceleration = function(){
-    this.speed += 10
-    console.log(`${this.make} acceleration +10 --->`,this.speed)
+class StudentCl extends PersonCl {
+    constructor(fullName,year, course) {
+        super(fullName, year);
+        this.course = course;
+    }
+
+    introduce (){
+        console.log(`hi ${this.fullName} from ${this.course}`)
+    }
+
+    // calcAge() {
+    //     super.calcAge();
+    // }
 }
 
-Car.prototype.brake = function(){
-    this.speed -= 5;
-    console.log(`${this.make} brake -5 -->`, this.speed)
-}
+const shahrokh = new StudentCl('shahrokh elmi', 1993, 'Javescript')
 
-const EV = function(make, speed, charge){
-    Car.call(this,make, speed);
-    this.charge = charge
-}
-EV.prototype = Object.create(Car.prototype)
-
-EV.prototype.chargeBattery = function(chargeTo){
-    this.charge = chargeTo
-}
-
-EV.prototype.accelerate = function(){
-    this.speed += 20;
-    this.charge -= (this.charge*0.01)
-    console.log(`${this.make} going at ${this.speed}, with a charge of ${this.charge}`)
-}
-
-// EV.prototype.constructor = EV;
-const tesla = new EV('Tesla',120, 40)
-console.log(tesla)
-
-tesla.accelerate()
-tesla.accelerate()
-tesla.chargeBattery(20)
-console.log(tesla.charge)
+shahrokh.introduce()
+shahrokh.calcAge()
