@@ -317,7 +317,7 @@ shahrokh.calcAge()
 
 // 16 Inheritance Between Classes Objecte create
 
-
+/*
 const PersonProto = {
     init(firstName,year){
         this.firstName = firstName;
@@ -341,3 +341,65 @@ const shahrokh = Object.create(StudentProto);
 shahrokh.init('shahrokh elmi', 1993, 'Javascript')
 
 console.log(shahrokh)
+ */
+
+//
+// class Account{
+//     #movements=[];
+//     hello = 'hi'
+//     constructor(owner, pin) {
+//         this.owner = owner;
+//         this.pin = pin
+//     }
+//
+//     #isTrue(){
+//         return true
+//     }
+//
+//     calcAge(){
+//         if(this.#isTrue()){
+//             console.log('hi')
+//         }
+//     }
+//
+// }
+//
+// const shah = new Account('shahrokh', 1234)
+
+// challenge #4
+
+class CarCL{
+    constructor(make, speed) {
+        this.make = make;
+        this.speed = speed;
+    }
+
+    acceleration(){
+        this.speed += 10;
+    }
+
+    brake(){
+        this.speed -= 5;
+    }
+}
+
+class EVCL extends CarCL{
+#charge;
+    constructor(make, speed, charge) {
+        super(make, speed);
+        this.#charge = charge
+    }
+
+    acceleration() {
+        // super.acceleration()
+        this.#charge -= 1;
+        return this
+    }
+    chargeBattery(chargeTo){
+        this.#charge = chargeTo;
+        return this
+    }
+}
+
+const tesla = new EVCL('tesla', 120, 40)
+
