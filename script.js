@@ -263,7 +263,7 @@ const shahrokh = new Student('shahrokh', 1993, 'JS');
 // tesla.chargeBattery(20)
 // console.log(tesla.charge)
 
-
+/*
 
 class PersonCl {
     constructor(fullName, year) {
@@ -312,3 +312,32 @@ const shahrokh = new StudentCl('shahrokh elmi', 1993, 'Javescript')
 
 shahrokh.introduce()
 shahrokh.calcAge()
+*/
+
+
+// 16 Inheritance Between Classes Objecte create
+
+
+const PersonProto = {
+    init(firstName,year){
+        this.firstName = firstName;
+        this.year = year;
+    },
+
+    calcAge(){
+        console.log(this.year)
+    }
+}
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init=function(firstName,year,course){
+    PersonProto.init.call(this,firstName,year);
+    this.course = course
+}
+StudentProto.introduce = function(){
+    console.log(`hi ${this.firstName}, this is ${this.course}`)
+}
+const shahrokh = Object.create(StudentProto);
+shahrokh.init('shahrokh elmi', 1993, 'Javascript')
+
+console.log(shahrokh)
